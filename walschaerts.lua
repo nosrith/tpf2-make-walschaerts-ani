@@ -198,16 +198,16 @@ local function calcPistonRodTransf()
 	ctx.transf.pistonRod[ctx.t + 1] = makeTransf(0.0, zero2, ctx.p2 - ctx.bp2, "piston rod")
 end
 
-local function calcConnectionRodTransf()
-	if not (ctx.transf.connectionRod and checkVars("p2", "p3")) then
-		ctx.transf.connectionRod = nil
+local function calcConnectingRodTransf()
+	if not (ctx.transf.connectingRod and checkVars("p2", "p3")) then
+		ctx.transf.connectingRod = nil
 		return
 	end
-	ctx.transf.connectionRod[ctx.t + 1] = makeTransf(
+	ctx.transf.connectingRod[ctx.t + 1] = makeTransf(
 		(ctx.p2 - ctx.p3):angle() - (ctx.bp2 - ctx.bp3):angle(),
-		ctx.bp3 - vec2.fromVec3(config.origin.connectionRod),
+		ctx.bp3 - vec2.fromVec3(config.origin.connectingRod),
 		ctx.p3 - ctx.bp3,
-		"connection rod"
+		"connecting rod"
 	)
 end
 
@@ -335,7 +335,7 @@ local function step(t)
 	calcP13()
 
 	calcPistonRodTransf()
-	calcConnectionRodTransf()
+	calcConnectingRodTransf()
 	calcCouplingRodTransf()
 	calcReturnCrankTransf()
 	calcEccentricRodTransf()
@@ -389,7 +389,7 @@ local function setupContext()
 
 	ctx.transf = {
 		pistonRod = {},
-		connectionRod = {},
+		connectingRod = {},
 		couplingRod = {},
 		returnCrank = {},
 		eccentricRod = {},

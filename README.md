@@ -12,28 +12,28 @@ A script tool to generate .ani file for rod animation.
         animations = {
             drive = {
                 params = {
-                    id = "vehicle/train/jgr_8620/connection_rod.ani",
+                    id = "vehicle/train/jgr_8620/connecting_rod.ani",
                 },
                 type = "FILE_REF",
             },
         },
         materials = { "vehicle/train/jgr_8620/base.mtl", },
-        mesh = "vehicle/train/jgr_8620/loco_connection_rod_lod0.msh",
-        name = "loco_connection_rod_right",
+        mesh = "vehicle/train/jgr_8620/loco_connecting_rod_lod0.msh",
+        name = "loco_connecting_rod_right",
         transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1, 0.49499997496605, 1, },
     },
     {
         animations = {
             drive = {
                 params = {
-                    id = "vehicle/train/jgr_8620/connection_rod.ani",
+                    id = "vehicle/train/jgr_8620/connecting_rod.ani",
                 },
                 type = "FILE_REF",
             },
         },
         materials = { "vehicle/train/jgr_8620/base.mtl", },
-        mesh = "vehicle/train/jgr_8620/loco_connection_rod_lod0.msh",
-        name = "loco_connection_rod_left",
+        mesh = "vehicle/train/jgr_8620/loco_connecting_rod_lod0.msh",
+        name = "loco_connecting_rod_left",
         transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0.49499997496605, 1, },
     },
 ```

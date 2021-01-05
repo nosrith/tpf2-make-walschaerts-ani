@@ -9,7 +9,7 @@ return {
 	--   
 	--                     p1 p2 p3 p4 p5 p6 p7 p8 p9 10 11 12 13 14
 	--   piston rod         R  R  R  R  -  -  -  -  -  -  -  -  -  -
-	--   connection rod     R  R  R  R  -  -  -  -  -  -  -  -  -  -
+	--   connecting rod     R  R  R  R  -  -  -  -  -  -  -  -  -  -
 	--   coupling rod       -  -  R  R  -  -  -  -  -  -  -  -  -  -
 	--   return crank    -  -  -  R  R  -  -  -  -  -  -  -  -  -
 	--   eccentric rod      -  -  -  R  R  R  R  -  -  -  -  -  -  -
@@ -26,10 +26,10 @@ return {
 		-- p1: Center position of cylinder.
 		p1 = { 3.485, 0.0, 0.8 },
 
-		-- p2: Joint position of piston and connection rod.
+		-- p2: Joint position of piston and connecting rod.
 		p2 = { 2.255, 0.0, 0.8 },
 
-		-- p3: Joint position of connection and coupling rod (= crunk pin).
+		-- p3: Joint position of connecting and coupling rod (= crunk pin).
 		p3 = { 0.0, 0.0, 0.495 },
 
 		-- p4: Center position of main axle.
@@ -70,7 +70,7 @@ return {
 	-- origin: Origin coordinates for each node in global coordinate system.
 	origin = {
 		pistonRod = { 2.255, 0.0, 0.8 },
-		connectionRod = { 0.0, 0.0, 0.495 },
+		connectingRod = { 0.0, 0.0, 0.495 },
 		couplingRod = { 0.0, 0.0, 0.495 },
 		returnCrank = { 0.0, 0.0, 0.495 },
 		eccentricRod = { 0.0, 0.0, 0.825 },
@@ -96,7 +96,7 @@ return {
 	-- outputName: If empty files will not be generated.
 	outputName = {
 		pistonRod = "piston_rod",
-		connectionRod = "connection_rod",
+		connectingRod = "connecting_rod",
 		couplingRod = "coupling_rod",
 		returnCrank = "return_crank",
 		eccentricRod = "eccentric_rod",
