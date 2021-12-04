@@ -72,28 +72,23 @@ local function calcP6()
 	end
 	local sqblen56 = (ctx.bp6 - ctx.bp5):len2()
 	local sqblen76 = (ctx.bp6 - ctx.bp7):len2()
-	local eval = function(x, g, n, step)
-		local p6 = vec2.new(x[1], x[2])
-		local sqlen56 = (p6 - ctx.p5):len2()
-		local sqlen76 = (p6 - ctx.bp7):len2()
-		local c1 = sqlen56 - sqblen56
-		local c2 = sqlen76 - sqblen76
-		local dp6 = ((p6 - ctx.p5) * c1 + (p6 - ctx.bp7) * c2) * 4
-		g[1], g[2] = dp6[1], dp6[2]
-		return sq(c1) + sq(c2)
-	end
-	local ret, x = lbfgs.lbfgs({ ctx.p6[1], ctx.p6[2] }, eval)
-	if ret < 0 then
+	local v57 = ctx.bp7 - ctx.p5
+	local sqlen57 = v57:len2()
+	if math.sqrt(sqblen56) + math.sqrt(sqblen76) < math.sqrt(sqlen57) then
 		print("**ERROR**")
 		print("Calculation failed at P6 at step " .. ctx.t .. ".")
-		print("This often occures when the base points are in an inoperable position.")
-		print("Internal message: ")
-		print("  " .. ret .. ": " .. lbfgs.strerror(ret))
+		print("P5 is in an inoperable position, too far from P7.")
 		ctx.error = true
 		ctx.p6 = nil
 		return
 	end
-	ctx.p6 = vec2.new(x[1], x[2])
+	local c = (sqblen56 - sqblen76 + sqlen57) / (2 * sqlen57)
+	local pc = ctx.p5 + v57 * c
+	local uvc6 = vec2.new(v57[2], -v57[1]) / v57:len()
+	local lenc6 = math.sqrt(sqblen56 - c * c * sqlen57)
+	local p6a, p6b = pc + uvc6 * lenc6, pc - uvc6 * lenc6
+	local d6a, d6b = (p6a - ctx.p6):len2(), (p6b - ctx.p6):len2()
+	ctx.p6 = d6a <= d6b and p6a or p6b
 	log("  P6: %s (BP6: %s, d: %s)", ctx.p6, ctx.bp6, ctx.p6 - ctx.bp6)
 end
 
